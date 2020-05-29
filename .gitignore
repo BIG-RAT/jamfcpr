@@ -1,0 +1,4 @@
+localOnly/
+jamfcpr/
+jamfcpr.xcodeproj/
+.DS_Store
