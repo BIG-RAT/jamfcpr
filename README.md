@@ -14,6 +14,8 @@ Copy packages from a directory (local/mounted share/drive) or from one JCDS to a
 ![alt text](./images/select.png "select")
 
 Once you have a list of packages select the package(s) you wish to replicate and click the Replicate button.  For the first two methods packages are replicated from the directory/share to the JCDS.  For the last method, where a JCDS is the source, packages are downloaded to ~/Downloads/jamfcpr/, then uploaded to the destination JCDS.  By default, once the upload is complete the local copy is deleted.  This behavior can be changed by selecting Save from the Options button.  In addition you're able to select Save Only, i.e. packages will only be downloaded.
-Checksums are used to determine if the package to upload differs from what is already on the JCDS.  
+Checksums are used to determine if the package to upload differs from what is already on the JCDS.
+
+Note, percents shown represent percent of current file being uploaded/downloaded.  The status bars represent the progress of all transfers.  
 
 Application log is available in ~/Library/Logs/jamfcpr/
