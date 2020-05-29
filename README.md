@@ -1,6 +1,6 @@
 # Jamf Cloud Package Replicator 
 
-Download: [jamfcpr](https://github.com/BIG-RAT/jamfcpr/releases/download/current/jamfcpr.zip)
+Download: [jamfcpr v0.9.5](https://github.com/BIG-RAT/jamfcpr/releases/download/current/jamfcpr.zip)
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
