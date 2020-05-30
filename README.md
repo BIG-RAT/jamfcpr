@@ -9,7 +9,7 @@ Copy packages from a directory (local/mounted share/drive) or from one JCDS to a
 * Browse to a local directory or mounted share.
 * Enter the URL of a Jamf Server with an on premise distribution point (DP) as the master.  Click the List button and the DP is mounted and available packages are displayed.
 * Enter the URL of a Jamf Server with a JCDS as the master in the Source URL field.  Click the List button and available packages on the JCDS will be listed.
-* Hold the option button while clicking the List button to select a non-master distribution point to replicate from.
+* Hold the option key while clicking the List button to select a non-master distribution point to replicate from.
 
 ![alt text](./images/select.png "select")
 
