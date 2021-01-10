@@ -1,6 +1,6 @@
 //
 //  WriteToLog.swift
-//  jamf-migrator
+//  jamfcpr
 //
 //  Created by Leslie Helou on 2/21/19.
 //  Copyright © 2019 jamf. All rights reserved.

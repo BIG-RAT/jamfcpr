@@ -10,8 +10,20 @@ import AppKit
 import Cocoa
 import Foundation
 
+class packageData: NSObject {
+    @objc dynamic var packageNameColumn: String
+    @objc dynamic var sizeColumn: String
+
+    init(packageNameColumn: String, sizeColumn: String) {
+        self.packageNameColumn = packageNameColumn
+        self.sizeColumn        = sizeColumn
+    }
+}
+
 class ViewController: NSViewController, URLSessionDelegate, URLSessionDataDelegate, URLSessionTaskDelegate {
-    
+
+    @objc dynamic var packageInfoArray: [packageData] = [packageData(packageNameColumn: "", sizeColumn: "")]
+
     @IBOutlet weak var table_HeaderView: NSTableHeaderView!
     @IBOutlet weak var          spinner: NSProgressIndicator!
     
@@ -245,6 +257,12 @@ class ViewController: NSViewController, URLSessionDelegate, URLSessionDataDelega
                 Alert().display(header: "Attention", message: "Both a username and password are required for the destination server.")
                 return()
             }
+            // destination server info
+            destinationServer      = destinationServer_TextField.stringValue
+            destinationUser        = destinationUser_TextField.stringValue
+            destinationPassword    = destinationPassword_TextField.stringValue
+            destinationUserCreds   = "\(destinationUser):\(destinationPassword)"
+            destinationBase64Creds = destinationUserCreds.data(using: .utf8)?.base64EncodedString() ?? ""
         }
         
         replicate_button.isEnabled = false
@@ -252,13 +270,6 @@ class ViewController: NSViewController, URLSessionDelegate, URLSessionDataDelega
         uploadCount   = 1
         downloadCount = 1
         loop          = true
-        
-        // destination server info
-        destinationServer      = destinationServer_TextField.stringValue
-        destinationUser        = destinationUser_TextField.stringValue
-        destinationPassword    = destinationPassword_TextField.stringValue
-        destinationUserCreds   = "\(destinationUser):\(destinationPassword)"
-        destinationBase64Creds = destinationUserCreds.data(using: .utf8)?.base64EncodedString() ?? ""
         
         // determine if packages are from a directory or server
         directoryOrServer()
