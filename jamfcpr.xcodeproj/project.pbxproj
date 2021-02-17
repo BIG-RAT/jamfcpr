@@ -353,7 +353,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.9.6;
+				MARKETING_VERSION = 0.9.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jamf.pse.jamfcpr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -376,7 +376,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.9.6;
+				MARKETING_VERSION = 0.9.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jamf.pse.jamfcpr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

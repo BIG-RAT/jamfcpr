@@ -130,7 +130,8 @@ class ListPackages: NSViewController, URLSessionDelegate {
             request.httpBody = "source=jamfCPR&username=\(username)&password=\(password)&skipComputers=true".data(using: String.Encoding.utf8)
             request.httpMethod = "POST"
             let configuration = URLSessionConfiguration.default
-            configuration.httpAdditionalHeaders = ["Content-Type" : "application/x-www-form-urlencoded"]
+            configuration.httpAdditionalHeaders = ["Content-Type" : "application/data-urlencoded"]
+//            configuration.httpAdditionalHeaders = ["Content-Type" : "application/x-www-form-urlencoded"]
             let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
             let task = session.dataTask(with: request as URLRequest, completionHandler: {
                 (data, response, error) -> Void in
