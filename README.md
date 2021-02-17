@@ -20,6 +20,6 @@ Note, percents shown represent percent of current file being uploaded/downloaded
 
 Application log is available in ~/Library/Logs/jamfcpr/
 
-##History
+## History
 
 - 2021-02-17: Fixed issued authenticating agains Jamf Pro v10.27 to get a list of packages from the source server.
