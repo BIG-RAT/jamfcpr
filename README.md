@@ -1,6 +1,6 @@
 # Jamf Cloud Package Replicator 
 
-Download: [jamfcpr v0.9.6](https://github.com/BIG-RAT/jamfcpr/releases/download/current/jamfcpr.zip)
+Download: [jamfcpr](https://github.com/BIG-RAT/jamfcpr/releases/download/current/jamfcpr.zip)
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
@@ -19,3 +19,6 @@ Checksums are used to determine if the package to upload differs from what is al
 Note, percents shown represent percent of current file being uploaded/downloaded.  The status bars represent the progress of all transfers.  
 
 Application log is available in ~/Library/Logs/jamfcpr/
+
+##History
+*2021-02-17: Fixed issued authenticating agains Jamf Pro v10.27 to get a list of packages from the source server.
