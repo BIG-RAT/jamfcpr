@@ -22,4 +22,6 @@ Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
 
+- 2021-03-27: Added option to force sync (ignore matching checksums).  Option is available through the Options button.
+
 - 2021-02-17: Fixed issued authenticating agains Jamf Pro v10.27 to get a list of packages from the source server.
