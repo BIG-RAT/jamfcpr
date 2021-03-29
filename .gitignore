@@ -2,4 +2,5 @@ localOnly/
 jamfcpr/
 jamfcpr.xcodeproj/
 Notes
+.gitignore
 .DS_Store
