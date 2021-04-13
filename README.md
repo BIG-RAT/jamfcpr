@@ -30,7 +30,9 @@ Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
 
-- 2021-03-28: Fix issue where small (< ~1MB) packages failed to sync.  Add ability to identify packages not on the destination server.
+- 2021-04-13 v1.0.1: Fixed issue where packages would get deleted from a source AFP/SMB distribution point if being used as a source.
+
+- 2021-03-28 v1.0.0: Fix issue where small (< ~1MB) packages failed to sync.  Add ability to identify packages not on the destination server.
 
 - 2021-03-27: Added option to force sync (ignore matching checksums), available by selecting "Force Sync" through the Options button.
 
