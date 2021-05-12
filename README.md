@@ -26,9 +26,21 @@ Checksums are used to determine if the package to upload differs from what is al
 
 Note, percents shown represent percent of current file being uploaded/downloaded.  The status bars represent the progress of all transfers.  
 
+* It can take several minutes for packages to show as available, please be patient waiting for the 'refresh' button to disappear.  The logs can be checked to verify the upload, should see something similar to:
+
+```
+    20210512_050017 loaded file to data.
+    20210512_050017 Perform upload task
+    20210512_050023 	 file successfully uploaded.
+    20210512_050023 Upload: security.pkg
+    20210512_050023 Status: READY
+```
+
 Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
+
+- 2021-05-12 v2.0.0: Move away from dbfileuploads endpoint, upload directly to the JCDS.  Additional checks to verify authentication to the jamf server.
 
 - 2021-04-13 v1.0.1: Fixed issue where packages would get deleted from a source AFP/SMB distribution point if being used as a source.
 
