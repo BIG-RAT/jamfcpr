@@ -18,6 +18,8 @@ To identify packages not currently on the destination JCDS click the Compare but
 
 ![alt text](./images/compare.png "compare")
 
+Missing packages appear in red.  JCDS to JCDS only, if checksums don't match the package will appear yellow.<br>
+![alt text](./images/checksum.png "checksum compare")<br>
 
 Once you have a list of packages select the package(s) you wish to replicate and click the Replicate button.  For the first two methods packages are replicated from the directory/share to the JCDS.  For the last method, where a JCDS is the source, packages are downloaded to ~/Downloads/jamfcpr/, then uploaded to the destination JCDS.  By default, once the upload is complete the local copy is deleted.  This behavior can be changed by selecting Save from the Options button.  In addition you're able to select Save Only, i.e. packages will only be downloaded.
 Checksums are used to determine if the package to upload differs from what is already on the JCDS. 
@@ -40,7 +42,9 @@ Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
 
-- 2021-05-12 v2.1.0: Fix crash that would result of spaces in the package name.  Add check to ensure package size doesn't exceed JCDS limit (20GB).  
+- 2021-05-31 v2.1.2:  Tracking down miscellaneous hicccups.  Add visual indication for packages with non-matching checksums (JCDS to JCDS only).
+
+- 2021-05-21 v2.1.0: Fix crash that would result of spaces in the package name.  Add check to ensure package size doesn't exceed JCDS limit (20GB).  
 
 - 2021-05-12 v2.0.0: Move away from dbfileuploads endpoint, upload directly to the JCDS.  Additional checks to verify authentication to the jamf server.
 
