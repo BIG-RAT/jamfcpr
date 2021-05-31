@@ -42,7 +42,7 @@ Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
 
-- 2021-05-31 v2.1.2:  Tracking down miscellaneous hicccups.  Add visual indication for packages with non-matching checksums (JCDS to JCDS only).
+- 2021-05-31 v2.1.2:  Tracking down miscellaneous hiccups.  Add visual indication for packages with non-matching checksums (JCDS to JCDS only).
 
 - 2021-05-21 v2.1.0: Fix crash that would result of spaces in the package name.  Add check to ensure package size doesn't exceed JCDS limit (20GB).  
 
