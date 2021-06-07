@@ -4,7 +4,7 @@ Download: [jamfcpr](https://github.com/BIG-RAT/jamfcpr/releases/download/current
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
-Copy packages from a directory (local/mounted share/drive) or from one JCDS to another JCDS with jamfcpr.app.  You're able to replicate packages using the following:
+Copy packages from a directory (local/mounted share/drive) or from one JCDS to another JCDS with jamfcpr.app.  It is required the the destination JCDS be marked as the principal distribution server.  You're able to replicate packages using the following:
 
 * Browse to a local directory or mounted share.
 * Enter the URL of a Jamf Server with an on premise distribution point (DP) as the master.  Click the List button and the DP is mounted and available packages are displayed.
@@ -41,6 +41,8 @@ Note, percents shown represent percent of current file being uploaded/downloaded
 Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
+
+- 2021-06-306 v2.2.0:  Added ability to sort by Name or Size.  Added check for destination JCDS being the principal distribution point, and warn if not.
 
 - 2021-05-31 v2.1.2:  Tracking down miscellaneous hiccups.  Add visual indication for packages with non-matching checksums (JCDS to JCDS only).
 
