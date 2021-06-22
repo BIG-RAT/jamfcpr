@@ -28,10 +28,12 @@ To identify packages not currently on the destination JCDS click the Compare but
 
 ![alt text](./images/compare.png "compare")
 
-Missing packages appear in red.  JCDS to JCDS only, if checksums don't match the package will appear yellow.<br>
+The text of missing packages appear in red, their icon will have a red X over it: ![alt text](./images/pkgIcon32-m.png "missing")
+
+JCDS to JCDS only, if checksums don't match the package text will appear yellow while the icon has yellow line through it: ![alt text](./images/pkgIcon32-c.png "missing")<br>
 ![alt text](./images/checksum.png "checksum compare")<br>
 
-Once you have a list of packages select the package(s) you wish to replicate and click the Replicate button.  For the first two methods packages are replicated from the directory/share to the JCDS.  For the last method, where a JCDS is the source, packages are downloaded to ~/Downloads/jamfcpr/, then uploaded to the destination JCDS.  By default, once the upload is complete the local copy is deleted.  This behavior can be changed by selecting Save from the Options button.  In addition you're able to select Save Only, i.e. packages will only be downloaded.
+Once you have a list of packages from the source server select the package(s) you wish to replicate and click the Replicate button.  For the first two methods packages are replicated from the directory/share to the JCDS.  For the last method, where a JCDS is the source, packages are downloaded to ~/Downloads/jamfcpr/, then uploaded to the destination JCDS.  By default, once the upload is complete the local copy is deleted.  This behavior can be changed by selecting Save from the Options button.  In addition you're able to select Save Only, i.e. packages will only be downloaded.
 Checksums are used to determine if the package to upload differs from what is already on the JCDS. 
 
 * To override this behavior, and force package(s) to sync, select "Force Sync" under the Options button.
@@ -52,7 +54,9 @@ Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
 
-- 2021-06-306 v2.2.0:  Added ability to sort by Name or Size.  Added check for destination JCDS being the principal distribution point, and warn if not.
+- 2021-0618 v3.0.0:  Add support for using AWS (non-JCDS) as a source package distribution server.  Allow up to 3 simultaneous uploads.  Present different icons to identify missing packages or non-matching checksums between source and destination.  Correct issue where JCDS was not identified is SSO was enabled and Replicate was clicked before Compare.  Preserve display name while copying.
+
+- 2021-06-06 v2.2.0:  Added ability to sort by Name or Size.  Added check for destination JCDS being the principal distribution point, and warn if not.
 
 - 2021-05-31 v2.1.2:  Tracking down miscellaneous hiccups.  Add visual indication for packages with non-matching checksums (JCDS to JCDS only).
 
