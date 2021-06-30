@@ -12,8 +12,6 @@ In addition, verify connectivity if no packages have been uploaded.
 ![alt text](./images/test.png "test")
 <br><br><br><br>
 
-
-
 You're able to replicate packages using the following:
 
 * Browse to a local directory or mounted share.
@@ -22,16 +20,16 @@ You're able to replicate packages using the following:
 * Hold the option key while clicking the List button to select a non-master distribution point to replicate from.
 
 ![alt text](./images/select.png "select")
+<br><br>
 
-To identify packages not currently on the destination JCDS click the Compare button.
+To identify packages not currently on the destination JCDS select the attribute (checksum or size) you wish to use to compare source and destination packages, then click the Compare button.  If comparing by checksum be aware this can take a while as the checksum is generated for packages stored locally or on a mounted share.  Checksums for packages stored in the cloud do not need to be calulated as they already exist.
 
 
 ![alt text](./images/compare.png "compare")
 
 The text of missing packages appear in red, their icon will have a red X over it: ![alt text](./images/pkgIcon32-m.png "missing")
 
-JCDS to JCDS only, if checksums don't match the package text will appear yellow while the icon has yellow line through it: ![alt text](./images/pkgIcon32-c.png "missing")<br>
-![alt text](./images/checksum.png "checksum compare")<br>
+If the selected attribute used to compare packages differ, the text will appear blue while the icon has blue line through it: ![alt text](./images/pkgIcon32-c.png "missing")<br><br>
 
 Once you have a list of packages from the source server select the package(s) you wish to replicate and click the Replicate button.  For the first two methods packages are replicated from the directory/share to the JCDS.  For the last method, where a JCDS is the source, packages are downloaded to ~/Downloads/jamfcpr/, then uploaded to the destination JCDS.  By default, once the upload is complete the local copy is deleted.  This behavior can be changed by selecting Save from the Options button.  In addition you're able to select Save Only, i.e. packages will only be downloaded.
 Checksums are used to determine if the package to upload differs from what is already on the JCDS. 
@@ -53,6 +51,8 @@ Note, percents shown represent percent of current file being uploaded/downloaded
 Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
+
+- 2021-06-30 v3.1.0:  Add ability to save passwords to the keychain.  Add option to compare backages by size.  Preserve compare results when sorting by name/size.  Catch and report on failed uploads.
 
 - 2021-06-22 v3.0.0:  Add support for using AWS (non-JCDS) as a source package distribution server.  Allow up to 3 simultaneous uploads.  Present different icons to identify missing packages or non-matching checksums between source and destination.  Correct issue where JCDS was not identified if SSO was enabled and Replicate was clicked before Compare.  Preserve display name while copying.
 
