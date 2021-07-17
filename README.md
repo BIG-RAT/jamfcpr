@@ -52,6 +52,8 @@ Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
 
+- 2021-07-16 v3.1.1:  Fixed issue where packages don't display first time app is used without clicking the Name or Size column header.
+
 - 2021-06-30 v3.1.0:  Add ability to save passwords to the keychain.  Add option to compare backages by size.  Preserve compare results when sorting by name/size.  Catch and report on failed uploads.
 
 - 2021-06-22 v3.0.0:  Add support for using AWS (non-JCDS) as a source package distribution server.  Allow up to 3 simultaneous uploads.  Present different icons to identify missing packages or non-matching checksums between source and destination.  Correct issue where JCDS was not identified if SSO was enabled and Replicate was clicked before Compare.  Preserve display name while copying.
