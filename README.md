@@ -52,6 +52,8 @@ Application log is available in ~/Library/Logs/jamfcpr/
 
 ## History
 
+- 2021-12-08 v3.1.5:  Improved stability.  Added animation while information is being retrieved from the destination server.
+
 - 2021-07-16 v3.1.1:  Fixed issue (#7) where packages don't display first time app is used without clicking the Name or Size column header.  Handle failed uploads (issue #9).
 
 - 2021-06-30 v3.1.0:  Add ability to save passwords to the keychain.  Add option to compare packages by size.  Preserve compare results when sorting by name/size.  Catch and report on failed uploads.
