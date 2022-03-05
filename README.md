@@ -22,7 +22,13 @@ You're able to replicate packages using the following:
 ![alt text](./images/select.png "select")
 <br><br>
 
-To identify packages not currently on the destination JCDS select the attribute (checksum or size) you wish to use to compare source and destination packages, then click the Compare button.  If comparing by checksum be aware this can take a while as the checksum is generated for packages stored locally or on a mounted share.  Checksums for packages stored in the cloud do not need to be calulated as they already exist.
+Be aware you may need to approve access to mounted/network volumes if that is where the packages reside.
+
+![alt text](./images/networkVolume.png "allow access to network volume")
+<br><br>
+
+
+Packages not currently on the destination JCDS are identified by red text and with a red X through the icon.  To identify packages that differ from the source select the package(s), then the attribute (checksum or size) you wish to use for the comparison, then click the Compare button.  If comparing by checksum be aware this can take a while as the checksum is generated for packages stored locally or on a mounted share.  Checksums for packages stored in the cloud do not need to be calulated as they already exist.
 
 
 ![alt text](./images/compare.png "compare")
@@ -38,7 +44,7 @@ Checksums are used to determine if the package to upload differs from what is al
 
 Note, percents shown represent percent of current file being uploaded/downloaded.  The status bars represent the progress of all transfers.  
 
-* It can take several minutes for packages to show as available, please be patient waiting for the 'refresh' button to disappear.  The logs can be checked to verify the upload, should see something similar to:
+* It can take several minutes for packages to show as available (Jamf Pro syncs with the JCDS once an hour), please be patient waiting for the 'refresh' button to disappear.  The logs can be checked to verify the upload, should see something similar to:
 
 ```
     20210512_050017 loaded file to data.
@@ -48,9 +54,11 @@ Note, percents shown represent percent of current file being uploaded/downloaded
     20210512_050023 Status: READY
 ```
 
-Application log is available in ~/Library/Logs/jamfcpr/
+Application log is available in ~/Library/Logs/jamfcpr/.  You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘ L.
 
 ## History
+
+- 2022-03-04 v3.3.1:  Increase stability.  Only calculate checksum for selected packages.  Provide feedback while checksums are calculated.  Get list of packages from destination after retrieving source packages and identify packages not on the destination server.  Support bearer token authentication to the Classic API.  Retain selected items after comparing checksum/size.  Added shortcut to open logs folder.
 
 - 2021-12-08 v3.1.5:  Improved stability.  Added animation while information is being retrieved from the destination server.
 
