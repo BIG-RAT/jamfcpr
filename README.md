@@ -1,6 +1,6 @@
 # Jamf Cloud Package Replicator 
 
-Download: [jamfcpr](https://github.com/BIG-RAT/jamfcpr/releases/download/current/jamfcpr.zip)
+Download: [jamfcpr](https://github.com/BIG-RAT/jamfcpr/releases/latest/download/jamfcpr.zip)
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
@@ -57,6 +57,8 @@ Note, percents shown represent percent of current file being uploaded/downloaded
 Application log is available in ~/Library/Logs/jamfcpr/.  You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘ L.
 
 ## History
+
+- 2022-05-04 v3.3.2:  Resolve potential authentication issue with servers that have limited access configured.
 
 - 2022-03-04 v3.3.1:  Increase stability.  Only calculate checksum for selected packages.  Provide feedback while checksums are calculated.  Get list of packages from destination after retrieving source packages and identify packages not on the destination server.  Support bearer token authentication to the Classic API.  Retain selected items after comparing checksum/size.  Added shortcut to open logs folder.
 
