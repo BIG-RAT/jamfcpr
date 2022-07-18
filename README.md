@@ -58,7 +58,9 @@ Application log is available in ~/Library/Logs/jamfcpr/.  You can quickly access
 
 ## History
 
-- 2022-07-12 v3.3.3:  Resolve issue with destination information (URL/credentials) when running in Save Only mode.  Destination information is no longer required with Save Only mode.
+- 2022-07-18 v3.3.4:  Resolve issue with international characters and crash when clicking on an empty list of packages; issue #12.
+
+- 2022-07-12 v3.3.3:  Resolve issue with destination information (URL/credentials) when running in Save Only mode.  Destination information is no longer required with Save Only mode; issue #11.
 
 - 2022-05-04 v3.3.2:  Resolve potential authentication issue with servers that have limited access configured.
 
