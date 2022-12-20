@@ -15,11 +15,12 @@ In addition, verify connectivity if no packages have been uploaded.
 You're able to replicate packages using the following:
 
 * Browse to a local directory or mounted share.
-* Enter the URL of a Jamf Server with an on premise distribution point (DP) as the master.  Click the List button and the DP is mounted and available packages are displayed.
-* Enter the URL of a Jamf Server with a JCDS as the master in the Source URL field.  Click the List button and available packages on the JCDS will be listed.
-* Hold the option key while clicking the List button to select a non-master distribution point to replicate from.
+* Enter the URL of a Jamf Server with an on premise distribution point (DP) as the primary.  Click the List button and the DP is mounted and available packages are displayed.
+* Enter the URL of a Jamf Server with a JCDS as the primary in the Source URL field.  Click the List button and available packages on the JCDS will be listed.
+* Hold the option key while clicking the List button to select a non-primary distribution point to replicate from.
 
 ![alt text](./images/select.png "select")
+* Holding the option key again while clicking the List button will hide the Select button and revert back to the primary distribution point.
 <br><br>
 
 Be aware you may need to approve access to mounted/network volumes if that is where the packages reside.
@@ -57,6 +58,8 @@ Note, percents shown represent percent of current file being uploaded/downloaded
 Application log is available in ~/Library/Logs/jamfcpr/.  You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘ L.
 
 ## History
+
+- 2022-11-19 v3.5.0:  Fix issue with bearer token only authentication to the Classic API.  Changes to the UI, ability to hide username/password fields.  Modify permissions check, user needs User Jamf Admin and Save With Jamf Admin privileges to migrate packages.  Add information (when it was uploaded, account used to upload, and that is was uploaded with jamfCPR) to the Notes section for a package in Jamf Pro.
 
 - 2022-07-18 v3.3.4:  Resolve issue with international characters and crash when clicking on an empty list of packages; issue #12.
 
