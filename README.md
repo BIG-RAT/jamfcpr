@@ -1,5 +1,7 @@
 # Jamf Cloud Package Replicator 
 
+## New: [Jamf CPR for JCDS2](https://github.com/BIG-RAT/jamfcpr/wiki)
+
 Download: [jamfcpr](https://github.com/BIG-RAT/jamfcpr/releases/latest/download/jamfcpr.zip)
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
