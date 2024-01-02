@@ -4,7 +4,7 @@ Download: [jamfcpr_v4.0.2-b1](https://github.com/BIG-RAT/jamfcpr/releases/downlo
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
-Copy packages from a directory (local/mounted share/drive) or from one JCDS to another JCDS/directory/share with the jamfCPR app.  Shares can include local distribution points.  Note, shares must be mounted in advance of replicating.
+Copy packages from a directory (local/mounted share/drive) or from one JCDS to another JCDS/directory/share with the jamfCPR app.  Shares can include local distribution points.  Note, shares must be mounted in advance of replicating.  The application is scriptable, see the Wiki for more.
 <br><br>
 Verify connectivity if no packages have been uploaded.
 
