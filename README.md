@@ -4,46 +4,23 @@ Download: [jamfcpr](https://github.com/BIG-RAT/jamfcpr/releases/latest/download/
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
-Copy packages from a directory (local/mounted share/drive) or from one JCDS to another JCDS with jamfcpr.app.  **It is required the the destination JCDS be marked as the principal distribution server**.  
-![alt text](./images/principal.png "principal")
+Copy packages from a directory (local/mounted share/drive) or from one JCDS to another JCDS/directory/share with the jamfCPR app.  Shares can include local distribution points.  Note, shares must be mounted in advance of replicating.
 <br><br>
-In addition, verify connectivity if no packages have been uploaded.
+Verify connectivity if no packages have been uploaded.
 
 ![alt text](./images/test.png "test")
-<br><br><br><br>
-
-You're able to replicate packages using the following:
-
-* Browse to a local directory or mounted share.
-* Enter the URL of a Jamf Server with an on premise distribution point (DP) as the primary.  Click the List button and the DP is mounted and available packages are displayed.
-* Enter the URL of a Jamf Server with a JCDS as the primary in the Source URL field.  Click the List button and available packages on the JCDS will be listed.
-* Hold the option key while clicking the List button to select a non-primary distribution point to replicate from.
-
-![alt text](./images/select.png "select")
-* Holding the option key again while clicking the List button will hide the Select button and revert back to the primary distribution point.
-<br><br>
-
-Be aware you may need to approve access to mounted/network volumes if that is where the packages reside.
-
-![alt text](./images/networkVolume.png "allow access to network volume")
 <br><br>
 
 
-Packages not currently on the destination JCDS are identified by red text and with a red X through the icon.  To identify packages that differ from the source select the package(s), then the attribute (checksum or size) you wish to use for the comparison, then click the Compare button.  If comparing by checksum be aware this can take a while as the checksum is generated for packages stored locally or on a mounted share.  Checksums for packages stored in the cloud do not need to be calulated as they already exist.
+Packages can be sorted by name, size, or status.  The status column makes it easy to see what packages need updating.
+<br><br>
 
-
-![alt text](./images/compare.png "compare")
-
-The text of missing packages appear in red, their icon will have a red X over it: ![alt text](./images/pkgIcon32-m.png "missing")
-
-If the selected attribute used to compare packages differ, the text will appear blue while the icon has blue line through it: ![alt text](./images/pkgIcon32-c.png "missing")<br><br>
-
-Once you have a list of packages from the source server select the package(s) you wish to replicate and click the Replicate button.  For the first two methods packages are replicated from the directory/share to the JCDS.  For the last method, where a JCDS is the source, packages are downloaded to ~/Downloads/jamfcpr/, then uploaded to the destination JCDS.  By default, once the upload is complete the local copy is deleted.  This behavior can be changed by selecting Save from the Options button.  In addition you're able to select Save Only, i.e. packages will only be downloaded.
+Once you have a list of packages from the source server select the package(s) you wish to replicate and click the Replicate button.  For the first two methods packages are replicated from the source JCDS/directory/share to the destination JCDS/directory/share.  For the last method, where a JCDS is the source, packages are downloaded to ~/Downloads/jamfcpr/, then uploaded to the destination JCDS.  By default, once the upload is complete the local copy is deleted.  This behavior can be changed by selecting Save from the Options button.  In addition you're able to select Save Only, i.e. packages will only be downloaded.
 Checksums are used to determine if the package to upload differs from what is already on the JCDS. 
 
 * To override this behavior, and force package(s) to sync, select "Force Sync" under the Options button.
 
-Note, percents shown represent percent of current file being uploaded/downloaded.  The status bars represent the progress of all transfers.  
+Note, percents shown represent percent of current file being uploaded/downloaded.  The status bars below the downloading/uploading text fields represent the progress of all transfers.  
 
 * It can take several minutes for packages to show as available (Jamf Pro syncs with the JCDS once an hour), please be patient waiting for the 'refresh' button to disappear.  The logs can be checked to verify the upload, should see something similar to:
 
@@ -55,9 +32,13 @@ Note, percents shown represent percent of current file being uploaded/downloaded
     20210512_050023 Status: READY
 ```
 
-Application log is available in ~/Library/Logs/jamfcpr/.  You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘ L.
+Application log is available in ~/Library/Logs/jamfcpr/.  You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘-L.
+
+View the Wiki for additinal information.
 
 ## History
+
+- 2024-01-02 v3.5.0:  Redesign of the interface. Updated to be compatible with JCDS2 (only).  Enable command line usage.
 
 - 2022-11-19 v3.5.0:  Fix issue with bearer token only authentication to the Classic API.  Changes to the UI, ability to hide username/password fields.  Modify permissions check, user needs User Jamf Admin and Save With Jamf Admin privileges to migrate packages.  Add information (when it was uploaded, account used to upload, and that is was uploaded with jamfCPR) to the Notes section for a package in Jamf Pro.
 
