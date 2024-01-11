@@ -41,7 +41,7 @@ View the Wiki for additinal information.
 
 ## History
 
-- 2024-01-02 v4.0.2:  Better error handling, better handling of concurrent operations, better hancdling of bearer token.
+- 2024-01-02 v4.0.2:  Better error handling, better handling of concurrent operations, better handling of bearer token.
 
 - 2024-01-02 v4.0.2-b1:  Redesign of the interface. Updated to be compatible with JCDS2 (only).  Enable command line usage.
 
