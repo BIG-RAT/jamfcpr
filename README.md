@@ -41,6 +41,8 @@ View the Wiki for additinal information.
 
 ## History
 
+- 2024-01-02 v4.0.2:  Better error handling, better handling of concurrent operations, better hancdling of bearer token.
+
 - 2024-01-02 v4.0.2-b1:  Redesign of the interface. Updated to be compatible with JCDS2 (only).  Enable command line usage.
 
 - 2022-11-19 v3.5.0:  Fix issue with bearer token only authentication to the Classic API.  Changes to the UI, ability to hide username/password fields.  Modify permissions check, user needs User Jamf Admin and Save With Jamf Admin privileges to migrate packages.  Add information (when it was uploaded, account used to upload, and that is was uploaded with jamfCPR) to the Notes section for a package in Jamf Pro.
