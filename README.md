@@ -1,5 +1,8 @@
 # Jamf Cloud Package Replicator 
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/BIG-RAT/jamfcpr?display_name=tag) ![GitHub all releases](https://img.shields.io/github/downloads/BIG-RAT/jamfcpr/total)
+ ![GitHub issues](https://img.shields.io/github/issues-raw/BIG-RAT/jamfcpr) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/BIG-RAT/jamfcpr) ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/BIG-RAT/jamfcpr) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/BIG-RAT/jamfcpr)
+
 Download: [jamfcpr_v4.0.2-b1](https://github.com/BIG-RAT/jamfcpr/releases/download/v4.0.2-b1/jamfcpr_v4.0.2-b1.zip)
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
