@@ -37,7 +37,7 @@ Note, percents shown represent percent of current file being uploaded/downloaded
 
 Application log is available in ~/Library/Logs/jamfcpr/.  You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘-L.
 
-View the Wiki for additinal information.
+View the [Wiki](https://github.com/BIG-RAT/jamfcpr/wiki) for additinal information.
 
 ## History
 
