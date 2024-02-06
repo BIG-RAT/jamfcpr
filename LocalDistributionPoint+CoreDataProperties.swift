@@ -17,6 +17,7 @@ extension LocalDistributionPoint {
         return NSFetchRequest<LocalDistributionPoint>(entityName: "LocalDistributionPoint")
     }
 
+    @NSManaged public var owner: NSObject?
     @NSManaged public var id: NSObject?
     @NSManaged public var name: NSObject?
     @NSManaged public var ip_address: NSObject?
