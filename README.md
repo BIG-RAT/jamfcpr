@@ -1,13 +1,15 @@
 # Jamf Cloud Package Replicator 
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/BIG-RAT/jamfcpr?display_name=tag) ![GitHub all releases](https://img.shields.io/github/downloads/BIG-RAT/jamfcpr/total)  ![GitHub all releases](https://img.shields.io/github/downloads/BIG-RAT/jamfcpr/latest/total)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/BIG-RAT/jamfcpr?display_name=tag) ![GitHub all releases](https://img.shields.io/github/downloads/BIG-RAT/jamfcpr/total)  ![GitHub latest release](https://img.shields.io/github/downloads/BIG-RAT/jamfcpr/latest/total)
  ![GitHub issues](https://img.shields.io/github/issues-raw/BIG-RAT/jamfcpr) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/BIG-RAT/jamfcpr) ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/BIG-RAT/jamfcpr) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/BIG-RAT/jamfcpr)
 
 Download the current release: [jamfCPR](https://github.com/BIG-RAT/jamfcpr/releases/latest/download/jamfcpr.zip)
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
-Copy packages from a directory (local/mounted share/drive) or from one JCDS to another JCDS/directory/share with the jamfCPR app.  Shares can include local distribution points.  Note, shares must be mounted in advance of replicating.  The application is scriptable, see the Wiki for more.
+Copy packages from a directory (local/mounted share/drive) or from one JCDS to another JCDS/directory/share with the jamfCPR app.  Shares can include local distribution points.  Note, shares must be mounted in advance of replicating.  The application is scriptable.
+
+For detailed useage instructions see the [Wiki](https://github.com/BIG-RAT/jamfcpr/wiki)
 <br><br>
 Verify connectivity if no packages have been uploaded.
 
@@ -37,9 +39,10 @@ Note, percents shown represent percent of current file being uploaded/downloaded
 
 Application log is available in ~/Library/Logs/jamfcpr/.  You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘-L.
 
-View the [Wiki](https://github.com/BIG-RAT/jamfcpr/wiki) for additinal information.
 
 ## History
+
+- 2024-02-09 v4.1.0:  File distribution points will be listed (when applicable) when connecting to a Jamf Pro server. Auto mounting/unmounting of file share distributions points. Resolve issues when using API client.
 
 - 2024-01-02 v4.0.2:  Better error handling, better handling of concurrent operations, better handling of bearer token.
 
