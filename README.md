@@ -41,6 +41,8 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
+- 2024-02-26 v4.1.2:  Fix issue (#23) where app would not save new server.
+- 
 - 2024-02-26 v4.1.1:  Better performance/behavior when using an API client and switching client types. Minor UI updates, update app icon.
 
 - 2024-02-09 v4.1.0:  File distribution points will be listed (when applicable) when connecting to a Jamf Pro server. Auto mounting/unmounting of file share distributions points. Resolve issues when using API client.
