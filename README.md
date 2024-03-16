@@ -4,7 +4,7 @@
  ![GitHub issues](https://img.shields.io/github/issues-raw/BIG-RAT/jamfcpr) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/BIG-RAT/jamfcpr) ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/BIG-RAT/jamfcpr) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/BIG-RAT/jamfcpr)
 
 Download the current release: [jamfCPR](https://github.com/BIG-RAT/jamfcpr/releases/latest/download/jamfcpr.zip)<br>
-Download the latest beta (with AWS S3 support): [jamfCPR](https://github.com/BIG-RAT/jamfcpr/releases/download/v5.0.0-b1/jamfcpr_v5.0.0-b1.zip)<br>
+Download the latest beta (with AWS S3 support): [jamfCPR](https://github.com/BIG-RAT/jamfcpr/releases/download/v5.0.0-b2/jamfcpr_v5.0.0-b2.zip)<br>
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
