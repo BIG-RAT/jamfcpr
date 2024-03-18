@@ -4,6 +4,7 @@
  ![GitHub issues](https://img.shields.io/github/issues-raw/BIG-RAT/jamfcpr) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/BIG-RAT/jamfcpr) ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/BIG-RAT/jamfcpr) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/BIG-RAT/jamfcpr)
 
 Download the current release: [jamfCPR](https://github.com/BIG-RAT/jamfcpr/releases/latest/download/jamfcpr.zip)<br>
+Download the latest beta (with AWS S3 support): [jamfCPR](https://github.com/BIG-RAT/jamfcpr/releases/download/v5.0.0-b1/jamfcpr_v5.0.0-b1.zip)<br>
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
@@ -41,6 +42,8 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
+- 2024-03-14 v5.0.0-b1:  Add support for AWS S3 distribution points. Fix potential issue uploading/downloading packages to JCDSs hosted outside the US.
+
 - 2024-02-26 v4.1.2:  Fix issue (#23) where app would not save new server.
 
 - 2024-02-26 v4.1.1:  Better performance/behavior when using an API client and switching client types. Minor UI updates, update app icon.
