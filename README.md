@@ -4,7 +4,6 @@
  ![GitHub issues](https://img.shields.io/github/issues-raw/BIG-RAT/jamfcpr) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/BIG-RAT/jamfcpr) ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/BIG-RAT/jamfcpr) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/BIG-RAT/jamfcpr)
 
 Download the current release: [jamfCPR](https://github.com/BIG-RAT/jamfcpr/releases/latest/download/jamfcpr.zip)<br>
-Download the latest beta (with AWS S3 (and large file) support): [jamfCPR](https://github.com/BIG-RAT/jamfcpr/releases/download/v5.1.0-b1/jamfcpr_v5.1.0-b1.zip)<br>
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
@@ -42,7 +41,7 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
-- 2024-09-23 v5.1.0-b1:  Add support for files over 5GB. Due to an issue with token renewal the upload must complete within one hour. The amount of memory the app uses is directly related to the size of the file uploaded with the app memory usage greater than the size of the file.
+- 2024-09-25 v5.1.0:  Add support for files over 5GB. Due to an issue with token renewal the upload must complete within one hour. The amount of memory the app uses is directly related to the size of the file uploaded with the app memory usage greater than the size of the file.
 
 - 2024-03-18 v5.0.0-b3:  Add support for AWS S3 distribution points. Fix potential issue uploading/downloading packages to JCDSs hosted outside the US. Fix issues when Save Only is selected.
 
