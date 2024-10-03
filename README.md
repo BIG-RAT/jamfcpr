@@ -41,6 +41,8 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
+- 2024-10-03 v5.1.1:  Upload (session) token renewal has been resolved. Single file uploads can now take over an hour to upload.
+
 - 2024-09-25 v5.1.0:  Add support for files over 5GB. Due to an issue with token renewal the upload must complete within one hour. The amount of memory the app uses is directly related to the size of the file uploaded with the app memory usage greater than the size of the file.
 
 - 2024-03-18 v5.0.0-b3:  Add support for AWS S3 distribution points. Fix potential issue uploading/downloading packages to JCDSs hosted outside the US. Fix issues when Save Only is selected.
