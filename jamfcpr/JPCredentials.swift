@@ -32,7 +32,7 @@ struct JPCredentials {
         }
     }
     
-    public func save(service: String, account: String, credential: String, useApiClient: Bool) async -> String {
+    func save(service: String, account: String, credential: String, useApiClient: Bool) async -> String {
         
         var returnMessage = "keychain save process completed successfully"
         
@@ -113,7 +113,7 @@ struct JPCredentials {
         return returnMessage
     }
     
-    public func retrieve(service: String, account: String = "", useApiClient: Bool) async -> [String:String] {
+    func retrieve(service: String, account: String = "", useApiClient: Bool) async -> [String:String] {
        Logger.retrieveCredentials.info("fetch credentials for service: \(service, privacy: .public), account: \(account, privacy: .public)")
         //        print("[credentials.retrieve] service passed: \(service)")
         print("[credentials.retrieve] accessGroup: \(accessGroup)")
