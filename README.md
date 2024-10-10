@@ -41,6 +41,8 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
+- 2024-10-10 v5.2.0:  Resolve some potential authentications issues. Transfer category (create if need be), info, and notes from source Jamf Pro to destination. Account privileges must now also include read and create categories.
+
 - 2024-10-03 v5.1.1:  Upload (session) token renewal has been resolved. Single file uploads can now take over an hour to upload.
 
 - 2024-09-25 v5.1.0:  Add support for files over 5GB. Due to an issue with token renewal the upload must complete within one hour. The amount of memory the app uses is directly related to the size of the file uploaded with the app memory usage greater than the size of the file.
