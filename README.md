@@ -41,7 +41,7 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
-- 2024-10-10 v5.2.0:  Resolve some potential authentications issues. Transfer category (create if need be), info, and notes from source Jamf Pro to destination. Account privileges must now also include read and create categories.
+- 2024-10-11 v5.2.0:  Resolve some potential authentications issues. Transfer category (create if need be), info, and notes from source Jamf Pro to destination. Account privileges must now also include read and create categories.
 
 - 2024-10-03 v5.1.1:  Upload (session) token renewal has been resolved. Single file uploads can now take over an hour to upload.
 
