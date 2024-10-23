@@ -41,6 +41,8 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
+- 2024-10-23 v5.2.1:  Resolve permission issues when copying to a fileshare. Resolve issue when there is a space in the fileshare name. Fix potential issue where the app would hang at launch.
+
 - 2024-10-11 v5.2.0:  Resolve some potential authentications issues. Transfer category (create if need be), info, and notes from source Jamf Pro to destination. Account privileges must now also include read and create categories.
 
 - 2024-10-03 v5.1.1:  Upload (session) token renewal has been resolved. Single file uploads can now take over an hour to upload.
