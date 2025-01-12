@@ -10,14 +10,16 @@ import Security
 //log stream --info --predicate 'subsystem == "<app.bundle.id>"'
 //log stream --info --predicate 'subsystem == "<app.bundle.id>" AND category == "saveCredentials"'
 
-let kSecAttrAccountString          = NSString(format: kSecAttrAccount)
-let kSecValueDataString            = NSString(format: kSecValueData)
-let kSecClassGenericPasswordString = NSString(format: kSecClassGenericPassword)
-let prefix                         = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String ?? "unknown"
-var sharedPrefix                   = ""
-var accessGroup                    = ""
+enum KeychainError: Error {
+    case missingRequiredParameter
+}
+
+let prefix = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String ?? "unknown"
 
 struct JPCredentials {
+    
+    var sharedPrefix = ""
+    var accessGroup  = ""
     
     public static let shared = JPCredentials()
     public init() {
@@ -32,7 +34,7 @@ struct JPCredentials {
         }
     }
     
-    func save(service: String, account: String, credential: String, useApiClient: Bool) async -> String {
+    func save(service: String, account: String, credential: String, useApiClient: Bool) async throws -> String {
         
         var returnMessage = "keychain save process completed successfully"
         
@@ -50,7 +52,7 @@ struct JPCredentials {
 
                 if let password = credential.data(using: String.Encoding.utf8) {
 
-                    var keychainQuery: [String: Any] = [kSecClass as String: kSecClassGenericPasswordString,
+                    var keychainQuery: [String: Any] = [kSecClass as String: NSString(format: kSecClassGenericPassword),
                                                         kSecAttrService as String: keychainItemName,
                                                         kSecAttrAccessGroup as String: accessGroup,
                                                         kSecUseDataProtectionKeychain as String: true,
@@ -79,7 +81,7 @@ struct JPCredentials {
                     } else {
                         // credentials already exist, try to update
                        Logger.saveCredentials.info("see if keychain item \(keychainItemName, privacy: .public) for account \(account, privacy: .public) needs updating")
-                        keychainQuery = [kSecClass as String: kSecClassGenericPasswordString,
+                        keychainQuery = [kSecClass as String: NSString(format: kSecClassGenericPassword),
                                          kSecAttrService as String: keychainItemName,
                                          kSecAttrAccessGroup as String: accessGroup,
                                          kSecAttrAccount as String: account.lowercased(),
@@ -87,7 +89,7 @@ struct JPCredentials {
                                          kSecMatchLimit as String: kSecMatchLimitOne,
                                          kSecReturnAttributes as String: true]
                         if credential != accountCheck[account] {
-                            let updateStatus = SecItemUpdate(keychainQuery as CFDictionary, [kSecValueDataString:password] as [NSString : Any] as CFDictionary)
+                            let updateStatus = SecItemUpdate(keychainQuery as CFDictionary, [NSString(format: kSecValueData):password] as [NSString : Any] as CFDictionary)
                             if (updateStatus != errSecSuccess) {
                                 
                                Logger.saveCredentials.info("keychain item for service \(service, privacy: .public), account \(account, privacy: .public), failed to update.")
@@ -107,6 +109,9 @@ struct JPCredentials {
                     Logger.saveCredentials.info("failed to set password for \(keychainItemName, privacy: .public), account \(account, privacy: .public)")
                     returnMessage = "keychain save process was unsuccessful"
                 }
+            } else {
+                Logger.saveCredentials.error("failed to create keychain item for \(service, privacy: .public), account \(account, privacy: .public)")
+                throw KeychainError.missingRequiredParameter
             }
             
             print("[Credentials.save] returnMessage:\(returnMessage)")
@@ -148,10 +153,10 @@ struct JPCredentials {
         return keychainResult
     }
     
-    func itemLookup(service: String) -> [String:String] {
+    private func itemLookup(service: String) -> [String:String] {
         var userPassDict = [String:String]()
 //        print("[credentials.itemLookup] keychainName: \(service)")
-        let keychainQuery: [String: Any] = [kSecClass as String: kSecClassGenericPasswordString,
+        let keychainQuery: [String: Any] = [kSecClass as String: NSString(format: kSecClassGenericPassword),
                                             kSecAttrService as String: service,
                                             kSecAttrAccessGroup as String: accessGroup,
                                             kSecUseDataProtectionKeychain as String: true,
@@ -203,7 +208,7 @@ struct JPCredentials {
             return "PS2F6S478M"
         }
         
-        let theFile = bundleContents.appending(component: "embedded.provisionprofile")
+//        let theFile = bundleContents.appending(component: "embedded.provisionprofile")
         
         do {
             // Read the provisioning profile data
