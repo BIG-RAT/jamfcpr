@@ -201,7 +201,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
     
     @MainActor var stopProcessDelegate: StopProcessDelegate? = nil
     
-    func action(whichServer: String, endpoint: String, apiData: [String: Any], id: String, token: String, method: String, completion: @escaping (_ returnedJSON: [String: Any]) -> Void) {
+    @MainActor func action(whichServer: String, endpoint: String, apiData: [String: Any], id: String, token: String, method: String, completion: @escaping (_ returnedJSON: [String: Any]) -> Void) {
         
         if method.lowercased() == "skip" {
             completion(["JPAPI_result":"no valid token found", "JPAPI_response":0])
@@ -530,7 +530,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
         WriteToLog.shared.message(stringOfText: "[Jpapi.getAll] total records fetched \(returnedRecords.count) objects")
     }
     
-    func get(whichServer: String, theEndpoint: String, id: String = "", whichPage: Int = -1, completion: @escaping (_ returnedJson: [[String: Any]]) -> Void) {
+    @MainActor func get(whichServer: String, theEndpoint: String, id: String = "", whichPage: Int = -1, completion: @escaping (_ returnedJson: [[String: Any]]) -> Void) {
         var endpointVersion = ""
         switch theEndpoint {
         case "packages":
@@ -604,9 +604,9 @@ final class Jpapi: NSObject, URLSessionDelegate {
             break
         }
         
-        guard let url = URL(string: JamfProServer.url[whichServer] ?? "") else {
+        guard let url = await URL(string: JamfProServer.url[whichServer] ?? "") else {
 //            completion([] as Any)
-            print("[ExistingObjects.pagedGet] can not convert \(JamfProServer.url[whichServer] ?? "") to URL")
+            print("[ExistingObjects.pagedGet] can not convert \(await JamfProServer.url[whichServer] ?? "") to URL")
             return [:]
         }
         
@@ -623,7 +623,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
         let configuration  = URLSessionConfiguration.ephemeral
         var request        = URLRequest(url: endpointUrl)
         request.httpMethod = "GET"
-        configuration.httpAdditionalHeaders = ["Authorization" : "Bearer \(JamfProServer.accessToken[whichServer] ?? "")", "Content-Type" : "application/json", "Accept" : "application/json", "User-Agent" : AppInfo.userAgentHeader]
+        configuration.httpAdditionalHeaders = ["Authorization" : "Bearer \(await JamfProServer.accessToken[whichServer] ?? "")", "Content-Type" : "application/json", "Accept" : "application/json", "User-Agent" : AppInfo.userAgentHeader]
 //        print("[getAllPolicies] configuration.httpAdditionalHeaders: \(configuration.httpAdditionalHeaders ?? [:])")
         let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
 //        let task = session.dataTask(with: request as URLRequest, completionHandler: {
@@ -642,7 +642,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
                         return endpointJSON
                         //                           print("[ExistingObjects.get] endpointJSON for page \(whichPage): \(endpointJSON)")
                     } else {
-                        WriteToLog.shared.message(stringOfText: "[ExistingObjects.pagedGet] No data was returned from the GET.")
+                        await WriteToLog.shared.message(stringOfText: "[ExistingObjects.pagedGet] No data was returned from the GET.")
 //                        completion([:])
                         return [:]
                     }
@@ -650,7 +650,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
                     return [:]
                 }
             } else {
-                WriteToLog.shared.message(stringOfText: "[ExistingObjects.get] unable to read the response from the GET.")
+                await WriteToLog.shared.message(stringOfText: "[ExistingObjects.get] unable to read the response from the GET.")
                 //                        completion([:])
                 return [:]
             }

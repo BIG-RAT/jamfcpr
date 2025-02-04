@@ -19,11 +19,7 @@ class DpTypeVC: NSViewController, CloseWindowDelegate {
     @IBAction func dismiss_Action(_ sender: NSButton) {
         resourceType = sender.identifier?.rawValue ?? ""
         print("[DPTypeVC] sender: \(resourceType)")
-//        if resourceType == "local" {
-//            selectFolder()
-//        } else {
-            performSegue(withIdentifier: "resourceType", sender: nil)
-//        }
+        performSegue(withIdentifier: "resourceType", sender: nil)
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -37,44 +33,13 @@ class DpTypeVC: NSViewController, CloseWindowDelegate {
         
         sourceDestinationVC.mode = "create"
         sourceDestinationVC.resourceType = resourceType
-//        sourceDestinationVC.localPath = localPath
     }
     
-    
-//    func selectFolder() {
-//        let openPanel = NSOpenPanel()
-//        openPanel.canChooseDirectories = true
-//        openPanel.canChooseFiles       = false
-//        openPanel.canCreateDirectories = true
-//        
-//        openPanel.begin { [self] (result) in
-//            DispatchQueue.main.async { [self] in
-//                if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
-//                    Parameters.cloudDistribitionPoint = false
-//                    userDefaults.set("directory", forKey: "packageSource")
-//
-//                    Parameters.listOption = false
-//                    packagesFolderUrl = openPanel.url!
-//
-//                    WriteToLog.shared.message(stringOfText: "[selectFolder] packagesFolderUrl: \(String(describing: packagesFolderUrl))")
-//                    
-//                    localPath = packagesFolderUrl.path
-//                    
-//                    userDefaults.set("unmounted", forKey: "share")
-//                   
-//                    storeBookmark(theURL: openPanel.url!)
-//                    
-//                    performSegue(withIdentifier: "resourceType", sender: nil)
-//                }
-//            }
-//        }
-//    }
-    
     func closeDpTypeWindow() {
-        Task { @MainActor in
-            updateRepoListDelegate?.updateRepoList()
+//        Task { @MainActor in
+//            updateRepoListDelegate?.updateRepoList()
             dismiss(self)
-        }
+//        }
     }
     
     override func viewDidLoad() {

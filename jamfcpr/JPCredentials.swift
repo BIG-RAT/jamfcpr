@@ -119,7 +119,10 @@ struct JPCredentials {
     }
     
     func retrieve(service: String, account: String = "", useApiClient: Bool) async -> [String:String] {
-       Logger.retrieveCredentials.info("fetch credentials for service: \(service, privacy: .public), account: \(account, privacy: .public)")
+        if service.range(of: "^/", options: [.regularExpression, .caseInsensitive]) != nil {
+            return ["":""]
+        }
+        Logger.retrieveCredentials.info("fetch credentials for service: \(service, privacy: .public), account: \(account, privacy: .public)")
         //        print("[credentials.retrieve] service passed: \(service)")
         print("[credentials.retrieve] accessGroup: \(accessGroup)")
         var keychainResult = [String:String]()
