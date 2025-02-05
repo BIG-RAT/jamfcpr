@@ -41,6 +41,8 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
+- 2025-02-04 v6.0.0:  Requires Jamf Pro v11.5 or later. Consolidated management of source/destination shares/distributions points. More consistent handling of credentials. Improved response times went querying for existing packages.
+
 - 2024-10-31 v5.2.2:  Resolve issue where replicate button remains disabled after listing packages when destination is a file share.
 
 - 2024-10-23 v5.2.1:  Resolve permission issues when copying to a fileshare. Resolve issue when there is a space in the fileshare name. Fix potential issue where the app would hang at launch.
