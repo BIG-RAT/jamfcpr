@@ -402,87 +402,6 @@ final class Jpapi: NSObject, URLSessionDelegate {
         print("[Jpapi.getAll] returning \(whichServer) package count: \(await existingObjects.count)")
         return //await existingObjects
         
-        
-        /*
-        print("[getAll] look for \(theEndpoint)")
-        DispatchQueue.global(qos: .background).async { [self] in
-            Task { @MainActor in
-                do {
-                    let returnedResults = await pagedGet(whichServer: whichServer, theEndpoint: theEndpoint, whichPage: whichPage) //{ [self]
-                    //                    returnedResults in
-                    //                    pendingCalls -= 1
-                    let returnedJson = returnedResults as? [String: Any] ?? [:]
-                    //                    print("[getAll] pending calls: \(pendingCalls)")
-                    let totalRecords = returnedJson["totalCount"] as? Int ?? 0
-                    let pages = (totalRecords + (pageSize - 1)) / pageSize
-                    
-                    if let returnedRecords = returnedJson["results"] as? [[String: Any]], returnedRecords.count > 0 {
-//                        do {
-                            let jsonData = try JSONSerialization.data(withJSONObject: returnedRecords as Any)
-                            let somePackages = try JSONDecoder().decode([JsonUapiPackageDetail].self, from: jsonData)
-                            if whichServer == "source" {
-                                //                                    print("getAll: somePackages count: \(somePackages.count)")
-                                Packages.source.append(contentsOf: somePackages)
-                                print("[getAll]: source package count: \(Packages.source.count)")
-                                for thePackage in somePackages {
-                                    if let id = thePackage.id, let idNum = Int(id), let packageName = thePackage.packageName, let fileName = thePackage.fileName {
-                                        // looking for duplicates
-                                        if duplicatePackagesDict[fileName] == nil {
-                                            //                                                AvailableObjsToMig.byId[idNum] = fileName
-                                            duplicatePackagesDict[fileName] = [packageName]
-                                        } else {
-                                            duplicatePackages = true
-                                            duplicatePackagesDict[fileName]!.append(packageName)
-                                        }
-                                        existingObjects.append(ExistingObject(type: theEndpoint, id: idNum, name: packageName, fileName: fileName))
-                                    }
-                                }
-                            } else {
-                                Packages.destination.append(contentsOf: somePackages)
-                                print("[getAll]: somePackages destination count: \(Packages.destination.count)")
-                                for thePackage in somePackages {
-                                    if let id = thePackage.id, let idNum = Int(id), let packageName = thePackage.packageName, let fileName = thePackage.fileName {
-                                        // looking for duplicates
-                                        if duplicatePackagesDict[fileName] == nil {
-                                            duplicatePackagesDict[fileName] = [packageName]
-                                        } else {
-                                            duplicatePackages = true
-                                            duplicatePackagesDict[fileName]!.append(packageName)
-                                        }
-                                        existingObjects.append(ExistingObject(type: theEndpoint, id: idNum, name: packageName, fileName: fileName))
-                                    }
-                                }
-                            }
-//                        } catch {
-//                            print("[getAll] error decoding \(theEndpoint): \(error)")
-//                        }
-                        
-                        print("[getAll] records (\(theEndpoint)) added: \(returnedRecords.count)")
-                        WriteToLog.shared.message(stringOfText: "[Jpapi.getAll] total records fetched \(returnedRecords.count) objects")
-                    }
-                    print("[getAll] page \(whichPage + 1) of \(pages) complete")
-                    
-                    if (whichPage + 1 >= pages ) {
-                        print("[getAll] return to caller, record count: \(existingObjects.count)")
-                        //                        completion(existingObjects)
-                        return existingObjects
-                    } else {
-                        await getAll(whichServer: whichServer, theEndpoint: theEndpoint, whichPage: whichPage + 1) //{
-                        //                            returnedResults in
-                        //                            print("[getAll] page \(whichPage + 1) of \(pages) complete")
-                        //                            print("[getAll] finished fetching all \(theEndpoint)")
-                        print("[getAll] call page \(whichPage + 1) for \(theEndpoint)")
-                        //                        completion(existingObjects)
-                        return existingObjects
-                        //                        }
-                    }
-                    //                }
-                } catch {
-                    
-                }
-            }
-        }   // DispatchQueue.global - end
-        */
     }
     
     @MainActor private func processPackages(whichServer: String, returnedRecords: [[String: Any]]) async {
@@ -636,9 +555,9 @@ final class Jpapi: NSObject, URLSessionDelegate {
                 if httpSuccess.contains(httpResponse.statusCode) {
                     //                    print("[ExistingObjects.get] data as string: \(String(data: data ?? Data(), encoding: .utf8))")
                     let responseData = try? JSONSerialization.jsonObject(with: response.0, options: .allowFragments)
-                    if let endpointJSON = responseData! as? [String: Any] {
+                    if let endpointJSON = responseData! as? [String: Any], let objectOnPage = endpointJSON["results"] as? [[String: Any]] {
 //                        print("[ExistingObjects.get] endpointJSON for page \(whichPage): \(endpointJSON)")
-                        print("[ExistingObjects.get] packages found on page \(whichPage): \(endpointJSON["totalCount"] as? Int ?? 0)")
+                        print("[ExistingObjects.get] packages found on page \(whichPage): \(objectOnPage.count)")
                         return endpointJSON
                         //                           print("[ExistingObjects.get] endpointJSON for page \(whichPage): \(endpointJSON)")
                     } else {
