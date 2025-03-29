@@ -371,6 +371,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
                     existingObjects.removeAll()
                     Packages.source.removeAll()
                     Packages.destination.removeAll()
+                    print("stop process")
                     stopProcessDelegate?.stopProcess()
                 }
         }
@@ -378,17 +379,19 @@ final class Jpapi: NSObject, URLSessionDelegate {
         duplicatePackagesDict.removeAll()
     }
     
-    func getAll(whichServer: String, theEndpoint: String) async throws /*-> [Any]*/ {
+    func getAll(whichServer: String, theEndpoint: String) async throws {
         
-        let pageSize = 50
+        let pageSize = 100
         var pageOfPackages = await pagedGet(whichServer: whichServer, theEndpoint: theEndpoint, whichPage: 0)
         if let totalPackages = pageOfPackages["totalCount"] as? Int, let packageRecords = pageOfPackages["results"] as? [[String : Any]], totalPackages > 0 {
             await processPackages(whichServer: whichServer, returnedRecords: packageRecords)
+            await WriteToLog.shared.message(stringOfText: "[Jpapi.getAll] found \(packageRecords.count) packages on page 1")
             let pages = (totalPackages + (pageSize - 1)) / pageSize
             if pages > 1 {
                 for whichPage in 1..<pages {
                     pageOfPackages = await pagedGet(whichServer: whichServer, theEndpoint: theEndpoint, whichPage: whichPage)
                     if let packageRecords = pageOfPackages["results"] as? [[String : Any]] {
+                        await WriteToLog.shared.message(stringOfText: "[Jpapi.getAll] found \(packageRecords.count) packages on page \(whichPage + 1)")
                         await processPackages(whichServer: whichServer, returnedRecords: packageRecords)
                     }
                 }
@@ -401,7 +404,6 @@ final class Jpapi: NSObject, URLSessionDelegate {
         
         print("[Jpapi.getAll] returning \(whichServer) package count: \(await existingObjects.count)")
         return //await existingObjects
-        
     }
     
     @MainActor private func processPackages(whichServer: String, returnedRecords: [[String: Any]]) async {
@@ -411,7 +413,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
             if whichServer == "source" {
                 //                                    print("getAll: somePackages count: \(somePackages.count)")
                 Packages.source.append(contentsOf: somePackages)
-                print("[getAll]: source package count: \(Packages.source.count)")
+                print("[Jpapi.processPackages]: source package count: \(Packages.source.count)")
                 for thePackage in somePackages {
                     if let id = thePackage.id, let idNum = Int(id), let packageName = thePackage.packageName, let fileName = thePackage.fileName {
                         // looking for duplicates
@@ -427,7 +429,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
                 }
             } else {
                 Packages.destination.append(contentsOf: somePackages)
-                print("[getAll]: somePackages destination count: \(Packages.destination.count)")
+                print("[Jpapi.processPackages]: somePackages destination count: \(Packages.destination.count)")
                 for thePackage in somePackages {
                     if let id = thePackage.id, let idNum = Int(id), let packageName = thePackage.packageName, let fileName = thePackage.fileName {
                         // looking for duplicates
@@ -442,11 +444,10 @@ final class Jpapi: NSObject, URLSessionDelegate {
                 }
             }
         } catch {
-            print("[getAll] error decoding: \(error)")
+            print("[Jpapi.processPackages] error decoding: \(error)")
         }
         
-        print("[getAll] added: \(returnedRecords.count) records")
-        WriteToLog.shared.message(stringOfText: "[Jpapi.getAll] total records fetched \(returnedRecords.count) objects")
+        print("[Jpapi.processPackages] added: \(returnedRecords.count) records")
     }
     
     @MainActor func get(whichServer: String, theEndpoint: String, id: String = "", whichPage: Int = -1, completion: @escaping (_ returnedJson: [[String: Any]]) -> Void) {
@@ -514,7 +515,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
     func pagedGet(whichServer: String, theEndpoint: String, id: String = "", whichPage: Int = -1) async -> [String: Any] {
         
         var endpointVersion = ""
-        var pageSize = 50
+        var pageSize = 100
         
         switch theEndpoint {
         case "packages":
