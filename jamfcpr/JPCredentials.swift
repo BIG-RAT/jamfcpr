@@ -124,11 +124,11 @@ struct JPCredentials {
         }
         Logger.retrieveCredentials.info("fetch credentials for service: \(service, privacy: .public), account: \(account, privacy: .public)")
         //        print("[credentials.retrieve] service passed: \(service)")
-        print("[credentials.retrieve] accessGroup: \(accessGroup)")
+//        print("[credentials.retrieve] accessGroup: \(accessGroup)")
         var keychainResult = [String:String]()
         var theService     = service.lowercased().fqdnFromUrl
 
-        print("[credentials] JamfProServer useApiClient: \(useApiClient)")
+//        print("[credentials] JamfProServer useApiClient: \(useApiClient)")
         
         if useApiClient {
             theService = "apiClient-" + theService
@@ -136,7 +136,7 @@ struct JPCredentials {
         
         let keychainItemName = sharedPrefix + "-" + theService
         
-        print("[retrieve] keychainItemName: \(keychainItemName)")
+//        print("[retrieve] keychainItemName: \(keychainItemName)")
        // WriteToLog.shared.message(theMessage: "[credentials.retrieve] keychainName: \(keychainItemName), account: \(account)")
         // look for common keychain item
         keychainResult = itemLookup(service: keychainItemName)

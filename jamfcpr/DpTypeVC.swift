@@ -18,7 +18,7 @@ class DpTypeVC: NSViewController, CloseWindowDelegate {
     
     @IBAction func dismiss_Action(_ sender: NSButton) {
         resourceType = sender.identifier?.rawValue ?? ""
-        print("[DPTypeVC] sender: \(resourceType)")
+//        print("[DPTypeVC] sender: \(resourceType)")
         performSegue(withIdentifier: "resourceType", sender: nil)
     }
     
@@ -27,7 +27,7 @@ class DpTypeVC: NSViewController, CloseWindowDelegate {
             return
         }
         
-        print("[DPTypeVC] prepare resourceType: \(resourceType)")
+//        print("[DPTypeVC] prepare resourceType: \(resourceType)")
         let sourceDestinationVC: SourceDestinationVC = segue.destinationController as! SourceDestinationVC
         sourceDestinationVC.delegate = self
         

@@ -232,7 +232,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
         if id != "" && id != "0" {
             urlString = (urlString.contains("/api/")) ? urlString + "/\(id)":urlString + "/id/\(id)"
         }
-        print("[Jpaapi.action] \(endpoint) id \(id)")
+//        print("[Jpaapi.action] \(endpoint) id \(id)")
         
         let url            = URL(string: "\(urlString)")
         let configuration  = URLSessionConfiguration.default
@@ -245,7 +245,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
         default:
             request.httpMethod = "PUT"
         }
-        print("[Jpaapi.action] Perform \(request.httpMethod ?? "") on urlString: \(urlString)")
+//        print("[Jpaapi.action] Perform \(request.httpMethod ?? "") on urlString: \(urlString)")
         
         if apiData.count > 0 {
             do {
@@ -353,7 +353,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
     */
     
     @MainActor private func displayDuplicatePackages(whichServer: String) {
-        print("[getAllDelegate] duplicate packages found on \(whichServer) server.")
+//        print("[getAllDelegate] duplicate packages found on \(whichServer) server.")
         
         var message = "\tFilename : Display Name\n"
         for (pkgFilename, displayNames) in jamfcpr.duplicatePackagesDict {
@@ -402,7 +402,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
             await displayDuplicatePackages(whichServer: whichServer)
         }
         
-        print("[Jpapi.getAll] returning \(whichServer) package count: \(await existingObjects.count)")
+//        print("[Jpapi.getAll] returning \(whichServer) package count: \(await existingObjects.count)")
         return //await existingObjects
     }
     
@@ -413,7 +413,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
             if whichServer == "source" {
                 //                                    print("getAll: somePackages count: \(somePackages.count)")
                 Packages.source.append(contentsOf: somePackages)
-                print("[Jpapi.processPackages]: source package count: \(Packages.source.count)")
+//                print("[Jpapi.processPackages]: source package count: \(Packages.source.count)")
                 for thePackage in somePackages {
                     if let id = thePackage.id, let idNum = Int(id), let packageName = thePackage.packageName, let fileName = thePackage.fileName {
                         // looking for duplicates
@@ -429,7 +429,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
                 }
             } else {
                 Packages.destination.append(contentsOf: somePackages)
-                print("[Jpapi.processPackages]: somePackages destination count: \(Packages.destination.count)")
+//                print("[Jpapi.processPackages]: somePackages destination count: \(Packages.destination.count)")
                 for thePackage in somePackages {
                     if let id = thePackage.id, let idNum = Int(id), let packageName = thePackage.packageName, let fileName = thePackage.fileName {
                         // looking for duplicates
@@ -447,7 +447,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
             print("[Jpapi.processPackages] error decoding: \(error)")
         }
         
-        print("[Jpapi.processPackages] added: \(returnedRecords.count) records")
+//        print("[Jpapi.processPackages] added: \(returnedRecords.count) records")
     }
     
     @MainActor func get(whichServer: String, theEndpoint: String, id: String = "", whichPage: Int = -1, completion: @escaping (_ returnedJson: [[String: Any]]) -> Void) {
@@ -461,11 +461,11 @@ final class Jpapi: NSObject, URLSessionDelegate {
         
         var endpointParent = "\(theEndpoint)"
         
-        print("[ExistingObjects.get] JamfProServer.url: \(JamfProServer.url)")
+//        print("[ExistingObjects.get] JamfProServer.url: \(JamfProServer.url)")
         var endpoint = (JamfProServer.url[whichServer] ?? "") + "/api/\(endpointVersion)/\(theEndpoint)"
         
         endpoint = endpoint.replacingOccurrences(of: "//api", with: "/api")
-        print("[ExistingObjects.get] endpoint: \(endpoint)")
+//        print("[ExistingObjects.get] endpoint: \(endpoint)")
         
         guard let endpointUrl = URL(string: endpoint) else {
             completion([])
@@ -473,7 +473,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
         }
         
 //        let endpointUrl = tmpUrl.appending(path: "/api/\(endpointVersion)/\(theEndpoint)")
-        print("[ExistingObjects.get] endpointUrl: \(endpointUrl.path())")
+//        print("[ExistingObjects.get] endpointUrl: \(endpointUrl.path())")
 //        let endpointUrl    = URL(string: "\(endpoint)")
         let configuration  = URLSessionConfiguration.ephemeral
         var request        = URLRequest(url: endpointUrl)
@@ -485,13 +485,13 @@ final class Jpapi: NSObject, URLSessionDelegate {
             (data, response, error) -> Void in
             session.finishTasksAndInvalidate()
             if let httpResponse = response as? HTTPURLResponse {
-                print("[ExistingObjects.get] response statusCode: \(httpResponse.statusCode)")
+//                print("[ExistingObjects.get] response statusCode: \(httpResponse.statusCode)")
                 if httpSuccess.contains(httpResponse.statusCode) {
 //                    print("[ExistingObjects.get] data as string: \(String(data: data ?? Data(), encoding: .utf8))")
                     let responseData = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                     
                     if let recordsJson = responseData as? [String: [[String: Any]]], let recordsArray = recordsJson[endpointParent] {
-                            print("[Jpapi.get] \(theEndpoint) - found \(recordsArray.description)")
+//                            print("[Jpapi.get] \(theEndpoint) - found \(recordsArray.description)")
                             completion(recordsArray)
                     } else {
                         WriteToLog.shared.message(stringOfText: "[ExistingObjects.get] No data was returned from the GET.")
@@ -538,7 +538,7 @@ final class Jpapi: NSObject, URLSessionDelegate {
         
 //        print("[ExistingObjects.getAll] whichServer: \(whichServer)")
 //        print("[ExistingObjects.getAll] accessToken: \(JamfProServer.accessToken[whichServer] ?? "")")
-        print("[ExistingObjects.pagedGet] endpointUrl: \(endpointUrl.absoluteString)")
+//        print("[ExistingObjects.pagedGet] endpointUrl: \(endpointUrl.absoluteString)")
         
         let configuration  = URLSessionConfiguration.ephemeral
         var request        = URLRequest(url: endpointUrl)
@@ -552,13 +552,13 @@ final class Jpapi: NSObject, URLSessionDelegate {
             let response = try await session.data(for: request)
             session.finishTasksAndInvalidate()
             if let httpResponse = response.1 as? HTTPURLResponse {
-                print("[ExistingObjects.pagedGet] response statusCode: \(httpResponse.statusCode)")
+//                print("[ExistingObjects.pagedGet] response statusCode: \(httpResponse.statusCode)")
                 if httpSuccess.contains(httpResponse.statusCode) {
                     //                    print("[ExistingObjects.get] data as string: \(String(data: data ?? Data(), encoding: .utf8))")
                     let responseData = try? JSONSerialization.jsonObject(with: response.0, options: .allowFragments)
                     if let endpointJSON = responseData! as? [String: Any], let objectOnPage = endpointJSON["results"] as? [[String: Any]] {
 //                        print("[ExistingObjects.get] endpointJSON for page \(whichPage): \(endpointJSON)")
-                        print("[ExistingObjects.get] packages found on page \(whichPage): \(objectOnPage.count)")
+//                        print("[ExistingObjects.get] packages found on page \(whichPage): \(objectOnPage.count)")
                         return endpointJSON
                         //                           print("[ExistingObjects.get] endpointJSON for page \(whichPage): \(endpointJSON)")
                     } else {
