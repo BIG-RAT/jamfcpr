@@ -41,7 +41,7 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
-- 2025-03-31 v6.0.2:  Fix issue working with S3 distrobutions points. Fix issue with API credentials.
+- 2025-03-31 v6.0.1:  Fix issue working with S3 distrobutions points. Fix issue with API credentials.
 
 - 2025-02-04 v6.0.0:  Requires Jamf Pro v11.5 or later. Consolidated management of source/destination shares/distributions points. More consistent handling of credentials. Improved response times went querying for existing packages.
 
