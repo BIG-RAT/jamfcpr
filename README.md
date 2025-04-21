@@ -41,6 +41,8 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
+- 2025-04-21 v6.0.3:  Fix issue where file shares were improperly saved and might appear as a Jamf Pro server in other apps I've worked on.
+
 - 2025-04-01 v6.0.2:  Fix issue working with local folders and remove file shares. Option to remount remote file share if it has already been mounted by another process.
 
 - 2025-03-31 v6.0.1:  Fix issue working with S3 distrobutions points. Fix issue with API credentials.
