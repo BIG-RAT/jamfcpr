@@ -41,7 +41,7 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
-- 2025-10-21 v6.1.0:  Fix issue with mounted shares. Miscellaneous updates to align with changes to the Jamf Pro API (cloud-distribution-point). 
+- 2025-10-04 v6.1.0:  Fix issue with mounted shares. Miscellaneous updates to align with changes to the Jamf Pro API (cloud-distribution-point). 
 
 - 2025-04-21 v6.0.3:  Fix issue where file shares were improperly saved and might appear as a Jamf Pro server in other apps I've worked on.
 
