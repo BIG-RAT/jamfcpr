@@ -7,6 +7,8 @@ Download the current release: [jamfCPR](https://github.com/BIG-RAT/jamfcpr/relea
 
 ![alt text](./images/jamfcpr.png "jamfcpr")
 
+By default the application will submit basic hardware, OS, and jamfCPR application usage to [TelemetryDeck](https://telemetrydeck.com). The data is sent anamously and used to aid in the development of the application. To opt out of data the sending of data click 'Opt out of analytics' at the bottom of the 'About jamfCPR' window.
+
 Copy packages from a directory (local/mounted share/drive), custom S3 bucket, or from one JCDS to another JCDS/S3 bucket/directory/share with the Jamf CPR app. Shares can include local distribution points. The application is scriptable.
 
 For detailed useage instructions see the [Wiki](https://github.com/BIG-RAT/jamfcpr/wiki)
