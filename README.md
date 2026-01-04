@@ -41,7 +41,9 @@ Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access 
 
 
 ## History
-- 2025-12-18 v6.1.2:  Add basic hardware, OS, and jamfcpr app useage collection. Data is sent anonymously to [TelemetryDeck](https:telemetrydeck.com) to aid in the development of the app. View 'About jamfcpr' to opt out of sending the data.
+- 2026-01-03 v6.2.1:  More memory friendly upload process, especially for larger files.
+
+- 2025-12-18 v6.2.0:  Add basic hardware, OS, and jamfcpr app useage collection. Data is sent anonymously to [TelemetryDeck](https:telemetrydeck.com) to aid in the development of the app. View 'About jamfcpr' to opt out of sending the data.
 Address issue #27, failed authentication with API clients.
   
 - 2025-10-24 v6.1.2:  Resolve issue that prevented the source dislay name, category, info, and notes from replicating.
