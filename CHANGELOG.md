@@ -1,5 +1,9 @@
 # 📜 Version History
 
+## [6.2.3] - 2026-03-21
+### Fixed
+- Resolve various upload failures.  
+
 ## [6.2.2] - 2026-03-21
 ### Fixed
 - Issue uploading new packages
