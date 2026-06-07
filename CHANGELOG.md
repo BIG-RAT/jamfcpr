@@ -1,5 +1,13 @@
 # 📜 Version History
 
+## [6.3.0] - 2026-06-06
+### Fixed
+- Token refresh
+- Inventory refresh after uploading a package
+### Added
+- Support S3 bucket for on prem servers
+- Add package search field
+  
 ## [6.2.3] - 2026-03-21
 ### Fixed
 - Resolve various upload failures.  
