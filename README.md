@@ -39,4 +39,7 @@ Note, percents shown represent percent of current file being uploaded/downloaded
     20210512_050023 Status: READY
 ```
 
-Application log is available in ~/Library/Logs/jamfcpr/. You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘-L.
+Application log is available in:
+```~/Library/Containers/jamf.ie.jamfcpr/Data/Library/Logs/```
+
+You can quickly access the logs folder from the menu bar, View --> Show Logs or ⌘-L.

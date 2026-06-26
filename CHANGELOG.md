@@ -1,5 +1,19 @@
 # 📜 Version History
 
+## [6.3.2] - 2026-06-25
+### Fixed
+- Resetting existing package info when using a folder as the source, info should be retained
+### Modified
+- Timing for when a request to refresh the package list is sent to Jamf Pro
+
+## [6.3.0] - 2026-06-06
+### Fixed
+- Token refresh
+- Inventory refresh after uploading a package
+### Added
+- Support S3 bucket for on prem servers
+- Add package search field
+  
 ## [6.2.3] - 2026-03-21
 ### Fixed
 - Resolve various upload failures.  
